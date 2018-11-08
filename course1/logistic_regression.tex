@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amsbsy}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{listings}
+
+\title{Logistic Regression}
+\author{Zehao Huang}
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    Cost Function: 
+    \begin{equation}
+        \label{eq:loss-function}
+        J(w, b) = \frac{1}{m}\sum_{i=1}^m L(a^{(i)}, y)
+    \end{equation}
+
+    Forward Calculation: 
+    \begin{equation}
+        \label{eq:forward}
+        a^{(i)} = \hat{y}^{(i)} = \sigma(z^{(i)}) = \sigma(w^T x^{(i)} + b)
+    \end{equation}
+
+    Backward Calculation:
+    \begin{equation}
+        \label{eq:backward}
+        \frac{\partial}{\partial w_1} J(w, b) = \frac{1}{m} \sum_{i = 1}^m
+        \frac{\partial}{\partial w_i} L(a^{(i)}, y^{(i)})
+    \end{equation}
+
+    The Algorithm: (assuming $n = 2$) $J = 0; dw_1 = 0; dw_2 = 0; db = 0;$
+    Assume $i$ goes from $1$ to $m$:
+    \begin{equation}
+        \label{eq:zi}
+        z^{(i)} = w^T x^{(i)} + b
+    \end{equation}
+    \begin{equation}
+        \label{eq:ai}
+        a^{(i)} = \sigma(z^{(i)})
+    \end{equation}
+    \begin{equation}
+        \label{eq:j-update}
+        J \mathrel{+}= -(y^{(i)} \log a^{(i)} + (1 - y^{(i)})\log (1 - a^{(i)}))
+    \end{equation}
+    \begin{equation}
+        \label{eq:dzi}
+        dz^{(i)} = a^{(i)} - y^{(i)}
+    \end{equation}
+    \begin{equation}
+        \label{eq:dw1-update}
+        dw_1 \mathrel{+}= x_1^{(i)} dz^{(i)}
+    \end{equation}
+    \begin{equation}
+        \label{eq:dw2-update}
+        dw_2 \mathrel{+}= x_2^{(i)} dz^{(i)}
+    \end{equation}
+    \begin{equation}
+        \label{eq:b-update}
+        db \mathrel{+}= dz^{(i)}
+    \end{equation}
+    \begin{equation}
+        \label{eq:mean}
+        J \mathrel{/}= m; dw_1 \mathrel{/}= m; dw_2 \mathrel{/}= m; db \mathrel{/}= m;
+    \end{equation}
+    \begin{equation}
+        \label{eq:update-parameters}
+        w_1 \coloneqq w_1 - \alpha dw_1; 
+        w_2 \coloneqq w_2 = \alpha dw_2; 
+        b \coloneqq - \alpha db; 
+    \end{equation} 
+
+    Vectorization:
+    
+\end{document}
