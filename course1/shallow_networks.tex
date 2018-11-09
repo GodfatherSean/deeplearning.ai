@@ -1,0 +1,92 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amsbsy}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{listings}
+
+\title{Shallow Neural Network}
+\author{Zehao Huang}
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    \section{Equations}
+    
+    Note that the superscript $[i]$ denotes the layer index, 
+    the superscript $(i)$ denotes the sample index.
+    \begin{equation}
+        z^{[1]} = W^{[1]}x + b^{[1]}
+    \end{equation}
+    \begin{equation}
+        a^{[1]} = \sigma(z^{[1]})
+    \end{equation}
+    \begin{equation}
+        z^{[2]} = W^{[2]}a^{[1]} + b^{[2]}
+    \end{equation}
+    \begin{equation}
+        a^{[2]} = \sigma(z^{[2]})
+    \end{equation}
+
+    Below is the loop body for the forward propagation of one case.
+
+    \begin{equation}
+        z^{[1](i)} = W^{[1]}x^{(i)} + b^{[[1]]}
+    \end{equation}
+    \begin{equation}
+        a^{[1](i)} = \sigma(z^{[1](i)})
+    \end{equation}
+    \begin{equation}
+        z^{[2](i)} = W^{[2]}a^{[1](i)} + b^{[2]}
+    \end{equation}
+    \begin{equation}
+        a^{[2](i)} = \sigma(z^{[2](i)})
+    \end{equation}
+
+    Below is the vectorized version of forward propagation.
+
+    \begin{equation}
+        Z^{[1]} = W^{[1]}X + b^{[1]}
+    \end{equation}
+    \begin{equation}
+        A^{[1]} = \sigma(Z^{[1]})
+    \end{equation}
+    \begin{equation}
+        Z^{[2]} = W^{[2]}A^{[1]} + b^{[2]}
+    \end{equation}
+    \begin{equation}
+        A^{[2]} = \sigma(Z^{[2]})
+    \end{equation}
+
+    \section{Derivatives of Activation Functions}
+     
+    For the sigmoid activation function
+    \begin{equation}
+        g^{'(z)} = a(1 - a)
+    \end{equation}
+
+    For the Tanh activation function
+    \begin{equation}
+        g^{'(z)} = 1 - a^2
+    \end{equation}
+
+    For the ReLU activation function
+    \begin{equation}
+        g^{'(z)} = 0 (z < 0), 1 (z \geq 0)
+    \end{equation}
+
+    For the leaky activation function
+    \begin{equation}
+        g^{'(z)} = 0.01 (z < 0), 1 (z \geq 0)
+    \end{equation}
+
+    \section{Gradient Descent}
+    
+    Parameters: $W^{[1]}, b^{[1]}, W^{[2]}, b^{[2]}$
+    
+    Cost function: $J(W^{[1]}, b^{[1]}, W^{[2]}, b^{[2]}) = \frac{1}{m} \sum_{i=1}^m L(\textrm{y}, y)$
+    
+\end{document}
