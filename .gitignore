@@ -1,5 +1,7 @@
 *.synctex.gz
 *.pdf
+*.pyc
 .idea
 .vscode
 .ipynb_checkpoints
+__pycache__
