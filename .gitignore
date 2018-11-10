@@ -2,3 +2,4 @@
 *.pdf
 .idea
 .vscode
+.ipynb_checkpoints
