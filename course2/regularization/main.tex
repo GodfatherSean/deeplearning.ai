@@ -1,9 +1,42 @@
 \documentclass{article}
+\usepackage{amsmath}
 
 \title{Regularization}
 \author{Zehao Huang}
 \date{\today}
 
 \begin{document}
-    \maketitle    
+    \maketitle
+
+    \section{L2 Regularization}
+
+    Logistic Regression L2 Regularization
+    \begin{align*}
+        ||w||_2^2 &= \sum_{j=1}^{n_x} w_j^2 = w^T w \\
+        J(w,b)    &= \frac{1}{m} \sum_{i=1}^m L(y^{(i)}, y^{(i)}) + \frac{\lambda}{2m} ||w||_2^2
+    \end{align*}
+
+    Logistic Regression L1 Regularization
+    \begin{align*}
+        ||w||_1   &= \sum_{j=1}^{n_x} w_j \\
+        J(w,b)    &= \frac{1}{m} \sum_{i=1}^m L(y^{(i)}, y^{(i)}) + \frac{\lambda}{m} ||w||_1
+    \end{align*}
+
+    Neural Network L2 Regularization (Weight Decay)
+    \begin{align*}
+        J               &= \frac{1}{m} \sum_{i=1}^m L(y^{(i)} , y^{(i)}) + \frac{\lambda}{2m} \sum_{l=1}^L ||W^{[l]}||_F^2 \\
+        ||W^{[l]}||_F^2 &= \sum_{i=1}^{n^{[l]}} \sum_{j=1}^{n^{[l-1]}} (w_{ij}^{[l]})^2
+    \end{align*}
+
+    As for back propagation: 
+    \begin{align*}
+        W^{[l]} := (1 - \frac{\alpha \lambda}{m})w^{[l]} - \alpha(Original Backprop)
+    \end{align*}
+
+    \section{Other Regularization Techniques}
+
+    \begin{enumerate}
+        \item Data Augmentation. Generate fake data sets by reflection, rotation, mirroring. 
+        \item Early Stopping. Plot dev set loss function and training set loss function, and stop early. 
+    \end{enumerate}
 \end{document}
