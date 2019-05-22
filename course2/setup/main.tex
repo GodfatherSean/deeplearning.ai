@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\title{Setting Up}
+\author{Zehao Huang}
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    \section{Normalization}
+    Subtract the mean and normalize the variance. 
+    \begin{align*}
+        \mu      &= \frac{1}{m} \sum_{i=1}^m x^{(i)} \\
+        x        &:= x - \mu \\
+        \sigma^2 &= \frac{1}{m} \sum_{i=1}^m x^{(i)} \*\* 2 \\
+        x        &:= x / \sigma^2
+    \end{align*}
+    
+\end{document}
